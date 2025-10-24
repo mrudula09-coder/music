@@ -1,0 +1,789 @@
+.song-options-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 8px 0;
+  min-width: 200px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  color: white;
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid #444;
+  margin-bottom: 8px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #1db954;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.back-button:hover {
+  color: #1ed760;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #3e3e3e;
+}
+
+.menu-icon {
+  margin-right: 12px;
+  font-size: 16px;
+  width: 20px;
+}
+
+.playlist-options {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.create-playlist {
+  display: flex;
+  padding: 12px 16px;
+  border-bottom: 1px solid #444;
+  margin-bottom: 8px;
+}
+
+.create-playlist input {
+  flex: 1;
+  background: #3e3e3e;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 8px;
+  color: white;
+  margin-right: 8px;
+}
+
+.create-playlist input::placeholder {
+  color: #aaa;
+}
+
+.create-playlist button {
+  background: #1db954;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.create-playlist button:hover {
+  background: #1ed760;
+}
+
+.playlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.playlist-item:hover {
+  background-color: #3e3e3e;
+}
+
+.song-count {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Song card three-dots button */
+.song-options-button {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  position: relative;
+  transition: all 0.2s;
+  opacity: 0.3; /* More visible by default */
+}
+
+.song-card:hover .song-options-button,
+.song-item:hover .song-options-button,
+.music-card:hover .song-options-button,
+.recent-song-card:hover .song-options-button {
+  opacity: 1;
+}
+
+.song-options-button:hover {
+  background-color: #3e3e3e;
+  color: white;
+  transform: scale(1.1);
+}
+
+.song-options-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile/Touch device styles */
+@media (max-width: 768px) {
+  .song-options-button {
+    opacity: 1; /* Always visible on mobile */
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+/* Enhanced visibility in different contexts */
+.music-card .song-options-container {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+}
+
+.recent-song-card .song-options-container {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+}
+
+/* Table row context */
+.song-item .song-options-container,
+.song-row .song-options-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Quick action buttons for easier access */
+.quick-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.song-card:hover .quick-actions,
+.song-item:hover .quick-actions {
+  opacity: 1;
+}
+
+.quick-action-btn {
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: all 0.2s;
+  margin: 2px;
+}
+
+.quick-action-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+.quick-action-btn.liked {
+  color: #1db954;
+}
+
+/* Song Options Wrapper Styles */
+.song-options-wrapper {
+  position: relative;
+}
+
+.song-options-wrapper.table-layout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.song-options-wrapper.card-layout {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+}
+
+.overlay-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  padding: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.song-card:hover .overlay-actions,
+.music-card:hover .overlay-actions,
+.recent-song-card:hover .overlay-actions {
+  opacity: 1;
+}
+
+.table-quick-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.song-item:hover .table-quick-actions,
+.song-row:hover .table-quick-actions {
+  opacity: 1;
+}
+
+.overlay-quick-actions .quick-action-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  width: 24px;
+  height: 24px;
+  font-size: 10px;
+}
+
+.overlay-quick-actions .quick-action-btn:hover {
+  background: #fff;
+  transform: scale(1.15);
+}
+
+.overlay-quick-actions .quick-action-btn.liked {
+  background: #1db954;
+  color: white;
+}
+
+/* Always visible option for better UX */
+.song-options-always-visible .song-options-button,
+.song-options-always-visible .quick-actions {
+  opacity: 0.6;
+}
+
+.song-options-always-visible:hover .song-options-button,
+.song-options-always-visible:hover .quick-actions {
+  opacity: 1;
+}
+
+/* Accessibility improvements */
+.song-options-button:focus,
+.quick-action-btn:focus {
+  outline: 2px solid #1db954;
+  outline-offset: 2px;
+}
+
+/* Tooltip styles */
+.quick-action-btn[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+/* Language Filter Styles */
+.language-filter {
+  background: #181818;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.filter-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.title-icon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.language-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.language-btn {
+  display: flex;
+  align-items: center;
+  background: #2a2a2a;
+  border: 1px solid #404040;
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: #b3b3b3;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  min-width: 120px;
+  justify-content: space-between;
+}
+
+.language-btn:hover {
+  background: #3e3e3e;
+  border-color: #1db954;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.language-btn.active {
+  background: #1db954;
+  border-color: #1db954;
+  color: #fff;
+  font-weight: 600;
+}
+
+.language-icon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.language-name {
+  flex: 1;
+  text-align: left;
+}
+
+.song-count {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 12px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.language-btn.active .song-count {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .language-options {
+    flex-direction: column;
+  }
+  
+  .language-btn {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+/* Language Badge and Section Info */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+.language-badge,
+.genre-badge {
+  background: #1db954;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.player-language-filter,
+.player-genre-browser {
+  margin: 16px 0;
+}
+
+/* Language specific styling */
+.song-item[data-language="Hindi"] .col-title::before {
+  content: "🇮🇳 ";
+  margin-right: 4px;
+}
+
+.song-item[data-language="Telugu"] .col-title::before {
+  content: "🎭 ";
+  margin-right: 4px;
+}
+
+.music-card[data-language] .card-content::before {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 16px;
+}
+
+.music-card[data-language="Hindi"] .card-content::before {
+  content: "🇮🇳";
+}
+
+.music-card[data-language="Telugu"] .card-content::before {
+  content: "🎭";
+}
+
+/* Genre Browser Styles */
+.genre-browser {
+  background: #181818;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.genre-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.genre-title-section .genre-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.view-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.view-toggle {
+  background: #282828;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  padding: 6px 10px;
+  color: #b3b3b3;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+}
+
+.view-toggle:hover {
+  background: #3e3e3e;
+  color: #fff;
+}
+
+.view-toggle.active {
+  background: #1db954;
+  border-color: #1db954;
+  color: #fff;
+}
+
+/* Card Layout */
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.genre-card-enhanced {
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.genre-card-enhanced:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.genre-card-enhanced.active {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.genre-icon-large {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.genre-name-large {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.genre-count-large {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* List Layout */
+.genre-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.genre-list-item {
+  background: #282828;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+
+.genre-list-item:hover {
+  background: #3e3e3e;
+  border-color: #1db954;
+}
+
+.genre-list-item.active {
+  background: rgba(29, 185, 84, 0.1);
+  border-color: #1db954;
+}
+
+.list-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.list-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.list-description {
+  font-size: 11px;
+  color: #b3b3b3;
+}
+
+.list-count {
+  font-size: 11px;
+  color: #b3b3b3;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.active-indicator {
+  font-size: 14px;
+  color: #1db954;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.genre-icon {
+  font-size: 24px;
+  margin-right: 12px;
+  min-width: 32px;
+}
+
+.genre-info {
+  flex: 1;
+}
+
+.genre-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.genre-card.active .genre-name {
+  color: #000;
+}
+
+.genre-description {
+  font-size: 12px;
+  color: #b3b3b3;
+  margin-bottom: 4px;
+}
+
+.genre-card.active .genre-description {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.genre-count {
+  font-size: 11px;
+  color: #888;
+  font-weight: 500;
+}
+
+.genre-card.active .genre-count {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive design for genre browser */
+@media (max-width: 768px) {
+  .genre-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .genre-card {
+    padding: 12px;
+  }
+  
+  .genre-icon {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  background: #282828;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 12px 16px;
+  min-width: 300px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+}
+
+.toast-success {
+  border-left: 4px solid #1db954;
+}
+
+.toast-error {
+  border-left: 4px solid #e22134;
+}
+
+.toast-info {
+  border-left: 4px solid #1e90ff;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.toast-icon {
+  font-size: 16px;
+}
+
+.toast-message {
+  color: white;
+  font-size: 14px;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  margin-left: 12px;
+  transition: color 0.2s;
+}
+
+.toast-close:hover {
+  color: white;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
